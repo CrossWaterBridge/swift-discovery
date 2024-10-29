@@ -1,5 +1,5 @@
-public import SwiftSyntax
-public import SwiftSyntaxMacros
+import SwiftSyntax
+import SwiftSyntaxMacros
 
 /// A type describing the expansion of the `@Discoverable` attribute macro.
 ///

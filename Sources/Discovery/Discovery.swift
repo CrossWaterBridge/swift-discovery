@@ -1,4 +1,4 @@
-private import _DiscoveryInternals
+import _DiscoveryInternals
 
 /// A protocol describing a type that is discoverable.
 ///

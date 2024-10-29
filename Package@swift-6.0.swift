@@ -1,4 +1,4 @@
-// swift-tools-version: 5.10
+// swift-tools-version: 6.0
 
 import CompilerPluginSupport
 import PackageDescription
@@ -17,7 +17,8 @@ let package = Package(
     .library(name: "Discovery", targets: ["Discovery"]),
   ],
   dependencies: [
-    .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "509.1.0"),
+    .package(url: "https://github.com/swiftlang/swift-syntax.git", "509.0.0"..<"601.0.0-prerelease"),
+    .package(url: "https://github.com/pointfreeco/swift-macro-testing.git", from: "0.5.2"),
   ],
   targets: [
     .target(
@@ -28,6 +29,12 @@ let package = Package(
       dependencies: [
         "_DiscoveryInternals",
         "DiscoveryMacros",
+      ]
+    ),
+    .testTarget(
+      name: "DiscoveryTests",
+      dependencies: [
+        "Discovery",
       ]
     ),
     .macro(
@@ -41,6 +48,14 @@ let package = Package(
         .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
       ]
     ),
+    .testTarget(
+      name: "DiscoveryMacrosTests",
+      dependencies: [
+        "DiscoveryMacros",
+        .product(name: "MacroTesting", package: "swift-macro-testing"),
+      ]
+    ),
   ],
+  swiftLanguageModes: [.v6],
   cxxLanguageStandard: .cxx20
 )
