@@ -20,8 +20,8 @@ public struct DiscoverableDeclarationMacro: MemberMacro, Sendable {
       """
       @available(*, deprecated, message: "This type is an implementation detail of the discovery library. Do not use it directly.")
       public enum \(enumName): Discovery.__DiscoverableContainer {
-        static var __markers: [Any.Type] { [\(raw: tagTypes.map { "\($0.trimmed).self" }.joined(separator: ", "))] }
-        static var __type: Any.Type { \(declaration.type.trimmed).self }
+        public static var __markers: [Any.Type] { [\(raw: tagTypes.map { "\($0.trimmed).self" }.joined(separator: ", "))] }
+        public static var __type: Any.Type { \(declaration.type.trimmed).self }
       }
       """,
     ]
